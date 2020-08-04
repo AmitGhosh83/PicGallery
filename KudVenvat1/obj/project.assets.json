@@ -2560,7 +2560,7 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "EmployeeManagement.DataAccess/1.0.0": {
+      "PicGallery.DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -2568,10 +2568,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.6"
         },
         "compile": {
-          "bin/placeholder/EmployeeManagement.DataAccess.dll": {}
+          "bin/placeholder/PicGallery.DataAccess.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EmployeeManagement.DataAccess.dll": {}
+          "bin/placeholder/PicGallery.DataAccess.dll": {}
         }
       }
     }
@@ -8360,17 +8360,17 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "EmployeeManagement.DataAccess/1.0.0": {
+    "PicGallery.DataAccess/1.0.0": {
       "type": "project",
-      "path": "../EmployeeManagement.DataAccess/EmployeeManagement.DataAccess.csproj",
-      "msbuildProject": "../EmployeeManagement.DataAccess/EmployeeManagement.DataAccess.csproj"
+      "path": "../EmployeeManagement.DataAccess/PicGallery.DataAccess.csproj",
+      "msbuildProject": "../EmployeeManagement.DataAccess/PicGallery.DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "EmployeeManagement.DataAccess >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 3.1.6",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.3"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.3",
+      "PicGallery.DataAccess >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8379,9 +8379,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\KudVenvat1\\KudVenvat1.csproj",
-      "projectName": "KudVenvat1",
-      "projectPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\KudVenvat1\\KudVenvat1.csproj",
+      "projectUniqueName": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\KudVenvat1\\PicGallery.csproj",
+      "projectName": "PicGallery",
+      "projectPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\KudVenvat1\\PicGallery.csproj",
       "packagesPath": "C:\\Users\\Amit_\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\KudVenvat1\\obj\\",
       "projectStyle": "PackageReference",
@@ -8399,8 +8399,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\EmployeeManagement.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\EmployeeManagement.DataAccess.csproj"
+            "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\PicGallery.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\PicGallery.DataAccess.csproj"
             }
           }
         }

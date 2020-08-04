@@ -5155,9 +5155,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\EmployeeManagement.DataAccess.csproj",
-      "projectName": "EmployeeManagement.DataAccess",
-      "projectPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\EmployeeManagement.DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\PicGallery.DataAccess.csproj",
+      "projectName": "PicGallery.DataAccess",
+      "projectPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\PicGallery.DataAccess.csproj",
       "packagesPath": "C:\\Users\\Amit_\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
