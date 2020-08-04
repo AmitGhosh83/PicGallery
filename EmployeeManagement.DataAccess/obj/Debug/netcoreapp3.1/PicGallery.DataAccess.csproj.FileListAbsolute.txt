@@ -9,3 +9,15 @@ C:\Users\Amit_\source\repos\KudVenkat\EmployeeManagement.DataAccess\obj\Debug\ne
 C:\Users\Amit_\source\repos\KudVenkat\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.dll
 C:\Users\Amit_\source\repos\KudVenkat\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.pdb
 C:\Users\Amit_\source\repos\KudVenkat\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.genruntimeconfig.cache
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\bin\Debug\netcoreapp3.1\PicGallery.DataAccess.deps.json
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\bin\Debug\netcoreapp3.1\PicGallery.DataAccess.runtimeconfig.json
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\bin\Debug\netcoreapp3.1\PicGallery.DataAccess.runtimeconfig.dev.json
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\bin\Debug\netcoreapp3.1\PicGallery.DataAccess.dll
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\bin\Debug\netcoreapp3.1\PicGallery.DataAccess.pdb
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.csprojAssemblyReference.cache
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.AssemblyInfo.cs
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.dll
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.pdb
+C:\Users\Amit_\source\repos\PicGallery\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.genruntimeconfig.cache

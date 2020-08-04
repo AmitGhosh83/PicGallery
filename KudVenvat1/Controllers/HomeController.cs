@@ -10,9 +10,11 @@ using KudVenvat1.ViewModels;
 using EmployeeManagement.DataAccess;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KudVenvat1.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly IEmpRepository _empRepository;
@@ -25,6 +27,7 @@ namespace KudVenvat1.Controllers
             this.hostingEnvironment = hostingEnvironment;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var model = _empRepository.GetAllEmployees()
@@ -42,6 +45,7 @@ namespace KudVenvat1.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public ViewResult Details( int? id)
         {
             //throw new Exception("Error occured");
@@ -68,11 +72,13 @@ namespace KudVenvat1.Controllers
         }
 
         [HttpGet]
+
         public IActionResult Create()
         {
 
             return View();
         }
+ 
         [HttpPost]
         public IActionResult Create(EmployeeCreateViewModel emp)
         {

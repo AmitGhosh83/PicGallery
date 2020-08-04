@@ -8379,11 +8379,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\KudVenvat1\\PicGallery.csproj",
+      "projectUniqueName": "C:\\Users\\Amit_\\source\\repos\\PicGallery\\PicGallery\\KudVenvat1\\PicGallery.csproj",
       "projectName": "PicGallery",
-      "projectPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\KudVenvat1\\PicGallery.csproj",
+      "projectPath": "C:\\Users\\Amit_\\source\\repos\\PicGallery\\PicGallery\\KudVenvat1\\PicGallery.csproj",
       "packagesPath": "C:\\Users\\Amit_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\KudVenvat1\\obj\\",
+      "outputPath": "C:\\Users\\Amit_\\source\\repos\\PicGallery\\PicGallery\\KudVenvat1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Amit_\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8399,8 +8399,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\PicGallery.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\EmployeeManagement.DataAccess\\PicGallery.DataAccess.csproj"
+            "C:\\Users\\Amit_\\source\\repos\\PicGallery\\PicGallery\\EmployeeManagement.DataAccess\\PicGallery.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Amit_\\source\\repos\\PicGallery\\PicGallery\\EmployeeManagement.DataAccess\\PicGallery.DataAccess.csproj"
             }
           }
         }

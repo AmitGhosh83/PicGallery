@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qsLRYGfMeqfL4WmV8qqdAXajENwBsQ7kazMTX5Up9BA2C6sb2FCVgPcePU3axgeJ5AZFhBxShAEPWzRXHuG4iw==",
+  "dgSpecHash": "rZZE0JKi/mHtG4/JnXXJgOyjGOQtSq/EkNw/t5GQB2H2KbDDD0/DBJniH/uAbj4I8uamVvbWnqA8M9+AOxaI6g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Amit_\\source\\repos\\KudVenkat\\KudVenvat1\\PicGallery.csproj",
+  "projectFilePath": "C:\\Users\\Amit_\\source\\repos\\PicGallery\\PicGallery\\KudVenvat1\\PicGallery.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Amit_\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.6\\microsoft.aspnetcore.cryptography.internal.3.1.6.nupkg.sha512",
     "C:\\Users\\Amit_\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.6\\microsoft.aspnetcore.cryptography.keyderivation.3.1.6.nupkg.sha512",

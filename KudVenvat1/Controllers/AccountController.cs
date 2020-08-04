@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.DataAccess;
 using EmployeeManagement.DataAccess.Models;
 using KudVenvat1.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -29,12 +30,14 @@ namespace KudVenvat1.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if(ModelState.IsValid)
@@ -70,13 +73,16 @@ namespace KudVenvat1.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
         {
+            ViewData["ReturnUrl"] = Request.Query["returnUrl"];
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +99,10 @@ namespace KudVenvat1.Controllers
 
                 if (result.Succeeded)
                 {
+                    if(!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
