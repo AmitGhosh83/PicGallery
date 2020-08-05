@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using PicGallery.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace KudVenvat1.Models
     {
         [Required]
         [EmailAddress]
+        //[Remote(action: "IsEmailAlreadyUsed", controller: "Account")]
+        [ValidEmailDomain(allowedDomain:"gmail.com", ErrorMessage ="Only allowing gmail.com users")]
         public string Email { get; set; }
 
         [Required]

@@ -36,6 +36,21 @@ namespace KudVenvat1.Controllers
             return View();
         }
 
+        //[AcceptVerbs("Get","Post")]
+        //[AllowAnonymous]
+        //public  async Task<IActionResult> IsEmailAlreadyUsed(string inputEmail)
+        //{
+        //    var user = await _userManager.FindByEmailAsync(inputEmail);
+        //    if (user == null)
+        //    {
+        //        return Json(true);
+        //    }
+        //    else
+        //    {
+        //        return Json($"Email {inputEmail} is already in use");
+        //    }
+        //}
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
