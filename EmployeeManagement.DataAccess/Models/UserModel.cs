@@ -22,5 +22,7 @@ namespace EmployeeManagement.DataAccess
         [Compare("Password", ErrorMessage = "Password and Confirm Password doesnt match")]
         [ValidEmailDomainModel(allowedDomain:"gmail.com", ErrorMessage ="Allowing Gmail domain at this point")]
         public string ConfirmPassword { get; set; }
+
+        public string City { get; set; }
     }
 }

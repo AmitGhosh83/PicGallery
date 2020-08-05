@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using PicGallery.DataAccess.Models;
 
 namespace KudVenvat1
 {
@@ -40,7 +41,7 @@ namespace KudVenvat1
                 options=>
                 options.UseSqlServer(Configuration.GetConnectionString("EmployeeDBConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 10;
                 options.Password.RequireNonAlphanumeric = false;

@@ -24,5 +24,7 @@ namespace KudVenvat1.Models
         [Display(Name ="Confirm Password")]
         [Compare("Password",ErrorMessage ="Password and Confirm Password doesnt match")]
         public string ConfirmPassword { get; set; }
+
+        public string City { get; set; }
     }
 }

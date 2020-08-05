@@ -4,6 +4,7 @@ using KudVenvat1.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using PicGallery.DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,10 @@ namespace KudVenvat1.Controllers
 {
     public class AccountController :Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -62,14 +63,16 @@ namespace KudVenvat1.Controllers
                 {
                     Email = model.Email,
                     Password = model.Password,
-                    ConfirmPassword = model.ConfirmPassword
+                    ConfirmPassword = model.ConfirmPassword,
+                    City= model.City
                 };
 
                 //UserModel--> IdentityUser
-                var user = new IdentityUser
+                var user = new ApplicationUser
                 {
                     UserName = userModel.Email,
-                    Email = userModel.Email
+                    Email = userModel.Email,
+                    City = userModel.City
                 };
 
                 var result= await _userManager.CreateAsync(user, userModel.Password);
