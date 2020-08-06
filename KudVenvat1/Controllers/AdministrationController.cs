@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Differencing;
@@ -11,6 +12,7 @@ using PicGallery.ViewModels;
 
 namespace PicGallery.Controllers
 {
+  
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -20,6 +22,49 @@ namespace PicGallery.Controllers
         {
             _roleManager = roleManager;
             _userManager = userManager;
+        }
+
+        [HttpGet]
+        public IActionResult ListUsers()
+        {
+            var model = _userManager.Users;
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if(user==null)
+            {
+                ViewBag.ErrorMessage = $"User with {id} not found";
+                return View("NotFound");
+            }
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var userClaims = await _userManager.GetClaimsAsync(user);
+
+            var userModel = new EditUserModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                UserName = user.UserName,
+                City = user.City,
+                Roles = userRoles.ToList(),
+                Claims = userClaims.Select(c=>c.Value).ToList()
+                
+            };
+            var model = new EditUserViewModel
+            {
+                Id = userModel.Id,
+                Email = userModel.Email,
+                UserName = userModel.UserName,
+                City = user.City,
+                Roles = userModel.Roles,
+                Claims = userModel.Claims
+            };
+                       
+
+            return View(model);
         }
 
         [HttpGet]

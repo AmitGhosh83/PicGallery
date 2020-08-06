@@ -78,7 +78,11 @@ namespace KudVenvat1.Controllers
                 var result= await _userManager.CreateAsync(user, userModel.Password);
                 if(result.Succeeded)
                 {
-                   await _signInManager.SignInAsync(user, isPersistent: false);
+                   if(_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("ListUsers","Administration");
+                    }
+                    await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)
@@ -121,12 +125,22 @@ namespace KudVenvat1.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    return RedirectToAction("Index", "Home");
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
