@@ -142,5 +142,60 @@ namespace PicGallery.Controllers
             }
             return View(model);
         }
+        
+        [HttpGet]
+        public async Task<IActionResult> EditUsersInRole(string roleId)
+        {
+            ViewBag.roleId = roleId;
+            var result = await _roleManager.FindByIdAsync(roleId);
+            if (result == null)
+            {
+                ViewBag.ErrorMessage = $"Roleid :{roleId} cannot be found";
+                return View("NotFound");
+            }
+
+            var users = await _userManager.Users.ToListAsync();
+
+            //UserRole --> UserRoleModel
+            var model = new List<UserRoleModel>();
+            foreach (var user in  users)
+            {
+                var userRoleModel = new UserRoleModel
+                {
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                };
+                //
+                if (await _userManager.IsInRoleAsync(user, result.Name))
+                {
+                    userRoleModel.IsSelected = true;
+                }
+                else
+                {
+                    userRoleModel.IsSelected = false;
+                }
+                model.Add(userRoleModel);
+            }
+            
+            //UserRoleModel --> UserRoleViewModel
+            var userRoleViewModel = new List<UserRoleViewModel>();
+            foreach (var user in model)
+            {
+                var userrole = new UserRoleViewModel
+                {
+                    UserId = user.UserId,
+                    UserName = user.UserName,
+                    IsSelected = user.IsSelected
+                };
+
+                userRoleViewModel.Add(userrole);
+            }
+            return View(userRoleViewModel);
+        }
+
+        public async Task<IActionResult> EditUsersInRole (List<UserRoleViewModel> model, string roleId)
+        {
+            return View();
+        }
     }
 }
