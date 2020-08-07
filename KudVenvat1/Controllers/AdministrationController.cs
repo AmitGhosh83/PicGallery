@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PicGallery.DataAccess.Models;
 using PicGallery.ViewModels;
 
@@ -66,6 +67,73 @@ namespace PicGallery.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(EditUserViewModel model)
+        {
+            var user = await _userManager.FindByIdAsync(model.Id);
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with {model.Id} not found";
+                return View("NotFound");
+            }
+            else
+            {
+                var userModel = new EditUserModel
+                {
+                    Email = model.Email,
+                    UserName = model.UserName,
+                    City = model.City,
+                };
+
+                user.Email = userModel.Email;
+                user.UserName = userModel.UserName;
+                user.City = userModel.City;
+
+                var result = await _userManager.UpdateAsync(user);
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers", "Administration");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with {id} not found";
+                return View("NotFound");
+            }
+            else
+            {
+                var result = await _userManager.DeleteAsync(user);
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers", "Administration");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View("ListUsers");
+                }
+            }
+        }
+
+
+
+
 
         [HttpGet]
         public IActionResult CreateRole()
