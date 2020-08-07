@@ -24,7 +24,7 @@ namespace PicGallery.Controllers
             _roleManager = roleManager;
             _userManager = userManager;
         }
-
+        #region User
         [HttpGet]
         public IActionResult ListUsers()
         {
@@ -131,10 +131,9 @@ namespace PicGallery.Controllers
             }
         }
 
+        #endregion
 
-
-
-
+        #region Role
         [HttpGet]
         public IActionResult CreateRole()
         {
@@ -255,6 +254,33 @@ namespace PicGallery.Controllers
             }
             return View(model);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteRole(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"User with {id} not found";
+                return View("NotFound");
+            }
+            else
+            {
+                var result = await _roleManager.DeleteAsync(role);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListRoles", "Administration");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View("ListRoles");
+                }
+            }
+        }
         
         [HttpGet]
         public async Task<IActionResult> EditUsersInRole(string roleId)
@@ -356,5 +382,7 @@ namespace PicGallery.Controllers
 
             return RedirectToAction("EditRole", new { Id= role.Id});
         }
+
+        #endregion
     }
 }

@@ -36,8 +36,19 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        <a class="btn btn-outline-primary" asp-action="EditRole" asp-controller="Administration" asp-route-id="@item.Id">Edit</a> |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        <div>
+                            <form asp-action="DeleteRole" asp-route-id="@item.Id" method="post">
+                                <a class="btn btn-outline-primary m-1" asp-action="EditRole" asp-controller="Administration" asp-route-id="@item.Id">Edit</a> |
+                                <span id="confirmDeleteSpan_@item.Id" style="display:none">
+                                    <span> You sure about that!</span>
+                                    <button type="submit" class="btn btn-outline-success">Yes </button>
+                                    <a href="#" class="btn btn-outline-danger" onclick="confirmDelete('@item.Id', false)">No</a>
+                                </span>
+                                <span id="deleteSpan_@item.Id">
+                                    <a href="#" class="btn btn-outline-danger m-1" onclick="confirmDelete('@item.Id',true)">Delete</a>
+                                </span>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             }
@@ -58,4 +69,7 @@ else
 
     </div>
 
+}
+@section Scripts{
+    <script src="~/js/site.js"></script>
 }
