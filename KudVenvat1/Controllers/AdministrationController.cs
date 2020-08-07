@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Logging;
 using PicGallery.DataAccess.Models;
 using PicGallery.ViewModels;
 
@@ -18,11 +19,15 @@ namespace PicGallery.Controllers
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ILogger<AdministrationController> _logger;
 
-        public AdministrationController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
+        public AdministrationController(RoleManager<IdentityRole> roleManager, 
+                                        UserManager<ApplicationUser> userManager,
+                                        ILogger<AdministrationController> logger)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _logger = logger;
         }
         #region User
         [HttpGet]
@@ -266,18 +271,30 @@ namespace PicGallery.Controllers
             }
             else
             {
-                var result = await _roleManager.DeleteAsync(role);
-                if (result.Succeeded)
+                //throw new Exception();
+                try
                 {
-                    return RedirectToAction("ListRoles", "Administration");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
+                    var result = await _roleManager.DeleteAsync(role);
+                    if (result.Succeeded)
                     {
-                        ModelState.AddModelError("", error.Description);
+                        return RedirectToAction("ListRoles", "Administration");
                     }
-                    return View("ListRoles");
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                        return View("ListRoles");
+                    }
+                }
+                catch(DbUpdateException ex)
+                {
+                    _logger.LogError($"Error deleting role {ex}");
+                    ViewBag.ErrorTitle = $"{role.Name} role is in use";
+                    ViewBag.ErrorMessage = $"{role.Name} has associated users, " +
+                        $" you need to delete users associated before deleing the role";
+                    return View("Error");
                 }
             }
         }
@@ -334,6 +351,7 @@ namespace PicGallery.Controllers
             return View(userRoleViewModel);
         }
 
+        [HttpPost]
         public async Task<IActionResult> EditUsersInRole (List<UserRoleViewModel> model, string roleId)
         {
             var role = await _roleManager.FindByIdAsync(roleId);

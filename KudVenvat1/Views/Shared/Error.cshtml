@@ -1,6 +1,18 @@
-﻿<h3>
-    An error occured while processing your request.
-    An email has been forwarded to the team and we are working on a fix. 
-</h3>
-<h1> Try the home page again</h1>
-<a asp-controller="Home" asp-action="Index"> Back to home</a>
+﻿@if (ViewBag.ErrorTitle == null)
+{
+    <h3>
+        An error occured while processing your request.
+        An email has been forwarded to the team and we are working on a fix.
+    </h3>
+    <h1> Try the home page again</h1>
+    <a asp-controller="Home" asp-action="Index"> Back to home</a>
+
+}
+else
+{
+    <h3 class="text-danger">@ViewBag.ErrorTitle</h3>
+    <h6 class="text-info">@ViewBag.ErrorMessage</h6>
+
+    <a asp-controller="Administration" asp-action="ListRoles"> Back to List Roles</a>
+}
+

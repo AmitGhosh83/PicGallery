@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PicGallery.DataAccess.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EmployeeManagement.DataAccess
@@ -19,6 +20,12 @@ namespace EmployeeManagement.DataAccess
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Seed();
+
+            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes()
+                     .SelectMany(x => x.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
         }
     }
 }
