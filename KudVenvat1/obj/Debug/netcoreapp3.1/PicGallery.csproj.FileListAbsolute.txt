@@ -470,7 +470,8 @@ D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Administration\
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Administration\ListRoles.cshtml.g.cs
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditRole.cshtml.g.cs
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditUsersInRole.cshtml.g.cs
-D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Administration\ListUsers.cshtml.g.cs
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditUser.cshtml.g.cs
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditRolesInUser.cshtml.g.cs
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Administration\ManageUserClaims.cshtml.g.cs
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Administration\AccessDenied.cshtml.g.cs

@@ -15,6 +15,7 @@ using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using PicGallery.DataAccess.Models;
+using System.Runtime;
 
 namespace KudVenvat1
 {
@@ -30,12 +31,32 @@ namespace KudVenvat1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //Add Policy
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("DeleteRolePolicy",
+                                 policy => policy.RequireClaim("Delete Role"));
+
+                options.AddPolicy("AdminRolePolicy",
+                                policy => policy.RequireRole("Admin"));
+                        
+
+            });
+
             services.AddControllersWithViews( options=> {
                 var policy = new AuthorizationPolicyBuilder()
                                 .RequireAuthenticatedUser()
                                 .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
+                options.Filters.Add(new AuthorizeFilter(policy)); 
             });
+
+            //Change Access Denied path
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Administration/AccessDenied");
+            });
+
 
             services.AddDbContextPool<AppDbContext>(
                 options=>
@@ -66,10 +87,10 @@ namespace KudVenvat1
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             app.UseStaticFiles();
-
             app.UseRouting();
-            app.UseAuthorization();
+            
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

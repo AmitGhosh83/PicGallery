@@ -6,7 +6,7 @@ namespace PicGallery.DataAccess.Models
 {
     public class UserClaim
     {
-        public string UserId { get; set; }
+        public string ClaimType { get; set; }
         public bool IsSelected { get; set; }
     }
 }

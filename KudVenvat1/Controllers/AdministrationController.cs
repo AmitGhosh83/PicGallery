@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -10,11 +12,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using PicGallery.DataAccess.Models;
+using PicGallery.Models;
 using PicGallery.ViewModels;
 
 namespace PicGallery.Controllers
 {
   
+   // [Authorize(Roles ="Admin")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -170,6 +174,7 @@ namespace PicGallery.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult ListRoles()
         {
             var roles = _roleManager.Roles;
@@ -261,6 +266,7 @@ namespace PicGallery.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "DeleteRolePolicy")]
         public async Task<IActionResult> DeleteRole(string id)
         {
             var role = await _roleManager.FindByIdAsync(id);
@@ -497,6 +503,7 @@ namespace PicGallery.Controllers
 
         #endregion
 
+        #region Claim
         [HttpGet]
         public async Task<IActionResult> ManageUserClaims(string userId)
         {
@@ -506,7 +513,97 @@ namespace PicGallery.Controllers
                 ViewBag.ErrorMessage = $"User with {userId} can't be found";
                 return View("NotFound");
             }
+            var existingUserClaims = await _userManager.GetClaimsAsync(user);
+            //ClaimIdentity--> UserClaimModel
+            var dataModel = new UserClaimModel
+            {
+                UserId = userId,
+            };
 
+            foreach (Claim claim in ClaimsStore.AllClaims)
+            {
+                var userClaim = new DataAccess.Models.UserClaim
+                {
+                    ClaimType = claim.Type,
+                };
+                if(existingUserClaims.Any(x=>x.Type==claim.Type))
+                {
+                    userClaim.IsSelected = true;
+                }
+                dataModel.Claims.Add(userClaim);
+            }
+
+            //UserClaimModel --> UserClaimViewModel
+
+            var model = new UserClaimViewModel
+            {
+                UserId = dataModel.UserId,
+            };
+            foreach (var item in dataModel.Claims)
+            {
+                var userclaim = new PicGallery.ViewModels.UserClaim
+                {
+                    ClaimType = item.ClaimType,
+                    IsSelected = item.IsSelected
+                    
+                };
+                model.Claims.Add(userclaim);
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ManageUserClaims(UserClaimViewModel model)
+        {
+            var user = await _userManager.FindByIdAsync(model.UserId);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with Id = {model.UserId} cannot be found";
+                return View("NotFound");
+            }
+            //Get users existing claims and delete them
+
+            var claims = await _userManager.GetClaimsAsync(user);
+            var result = await _userManager.RemoveClaimsAsync(user, claims);
+
+            if(!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Canot remove existing user claims");
+                return View(model);
+            }
+            //UserClaimViewModel--> UserClaimModel
+            var userModel = new UserClaimModel
+            {
+                UserId = model.UserId,
+            };
+            foreach (var item in model.Claims.Where(x=>x.IsSelected))
+            {
+                var userclaim = new PicGallery.DataAccess.Models.UserClaim
+                {
+                     ClaimType = item.ClaimType,
+                     IsSelected = item.IsSelected
+                };
+                userModel.Claims.Add(userclaim);
+            }
+
+            result = await _userManager.AddClaimsAsync(user,
+            userModel.Claims.Select(c => new Claim(c.ClaimType, c.ClaimType)));
+
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "Cannot add selected claims to user");
+                return View(model);
+            }
+            return RedirectToAction("EditUser", new { Id= model.UserId});
+        }
+        #endregion
+        
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
             return View();
         }
     }
