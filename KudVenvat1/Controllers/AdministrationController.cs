@@ -60,7 +60,7 @@ namespace PicGallery.Controllers
                 UserName = user.UserName,
                 City = user.City,
                 Roles = userRoles.ToList(),
-                Claims = userClaims.Select(c=>c.Value).ToList()
+                Claims = userClaims.Select(c => c.Type+ " : "+ c.Value).ToList()
                 
             };
             var model = new EditUserViewModel
@@ -528,7 +528,7 @@ namespace PicGallery.Controllers
                 {
                     ClaimType = claim.Type,
                 };
-                if(existingUserClaims.Any(x=>x.Type==claim.Type))
+                if(existingUserClaims.Any(x=>x.Type==claim.Type && x.Value=="true"))
                 {
                     userClaim.IsSelected = true;
                 }
