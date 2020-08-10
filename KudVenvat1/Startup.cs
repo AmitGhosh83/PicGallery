@@ -16,6 +16,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using PicGallery.DataAccess.Models;
 using System.Runtime;
+using System.Security.Claims;
+using PicGallery.Security;
 
 namespace KudVenvat1
 {
@@ -43,8 +45,18 @@ namespace KudVenvat1
                 options.AddPolicy("EditRolePolicy",
                                 policy => policy.RequireClaim("Edit Role"));
 
+                //options.AddPolicy("EditRolePolicy",
+                //                policy => policy.RequireAssertion(context =>
+                //                     context.User.IsInRole("TestRole") && // User has Test Role + Edit Role Claim
+                //                     context.User.HasClaim(claim => claim.Type == "Edit Role" && claim.Type == "true") ||
+                //                     context.User.IsInRole("Admin")));// Either user has Admin role
+
+                options.AddPolicy("EditRolePolicy",
+                            policy => policy.AddRequirements(new ManageAdminRolesAndClaimsRequirement()));
+
             });
 
+            //Ensure everyone has to login to access 
             services.AddControllersWithViews( options=> {
                 var policy = new AuthorizationPolicyBuilder()
                                 .RequireAuthenticatedUser()
@@ -73,6 +85,9 @@ namespace KudVenvat1
             //services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
             //services.AddSingleton<IEmpRepository, InMemoryEmployeeRepository>();
             services.AddScoped<IEmpRepository, SQLEmployeeRepository>();
+
+            //To bring in SecurityPolicy that 1 admin cant edit his own roles and claims
+            services.AddSingleton<IAuthorizationHandler, CanEditOnlyOtherAdminRolesandClaimHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

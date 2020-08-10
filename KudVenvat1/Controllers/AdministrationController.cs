@@ -182,7 +182,7 @@ namespace PicGallery.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "EditRolePolicy")]
+       
         public async Task<IActionResult> EditRole(string id)
         {
             var result = await _roleManager.FindByIdAsync(id);
@@ -220,7 +220,7 @@ namespace PicGallery.Controllers
         }
 
         [HttpPost]
-        [Authorize(Policy = "EditRolePolicy")]
+       
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
         {
             if (ModelState.IsValid)
@@ -411,6 +411,7 @@ namespace PicGallery.Controllers
 
 
         [HttpGet]
+        [Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> EditRolesInUser(string userId)
         {
             ViewBag.userId = userId;
@@ -464,6 +465,7 @@ namespace PicGallery.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> EditRolesInUser(List<RoleUserViewModel> model, string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
@@ -556,6 +558,7 @@ namespace PicGallery.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> ManageUserClaims(UserClaimViewModel model)
         {
             var user = await _userManager.FindByIdAsync(model.UserId);
