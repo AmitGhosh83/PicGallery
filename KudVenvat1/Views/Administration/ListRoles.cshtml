@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "ListRoles";
 }
+@inject Microsoft.AspNetCore.Authorization.IAuthorizationService _authorizationService
 
 <h1>All Roles</h1>
 
@@ -38,7 +39,10 @@
                     <td>
                         <div>
                             <form asp-action="DeleteRole" asp-route-id="@item.Id" method="post">
-                                <a class="btn btn-outline-primary m-1" asp-action="EditRole" asp-controller="Administration" asp-route-id="@item.Id">Edit</a> |
+                                @if ((await _authorizationService.AuthorizeAsync(User, null, "EditRolePolicy")).Succeeded)
+                                {
+                                  <a class="btn btn-outline-primary m-1" asp-action="EditRole" asp-controller="Administration" asp-route-id="@item.Id">Edit</a> 
+                                } |
                                 <span id="confirmDeleteSpan_@item.Id" style="display:none">
                                     <span> You sure about that!</span>
                                     <button type="submit" class="btn btn-outline-success">Yes </button>

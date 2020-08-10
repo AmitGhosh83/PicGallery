@@ -40,7 +40,8 @@ namespace KudVenvat1
 
                 options.AddPolicy("AdminRolePolicy",
                                 policy => policy.RequireRole("Admin"));
-                        
+                options.AddPolicy("EditRolePolicy",
+                                policy => policy.RequireClaim("Edit Role"));
 
             });
 

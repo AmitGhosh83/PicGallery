@@ -18,7 +18,7 @@ using PicGallery.ViewModels;
 namespace PicGallery.Controllers
 {
   
-   // [Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -182,6 +182,7 @@ namespace PicGallery.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> EditRole(string id)
         {
             var result = await _roleManager.FindByIdAsync(id);
@@ -219,6 +220,7 @@ namespace PicGallery.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
         {
             if (ModelState.IsValid)
@@ -589,7 +591,7 @@ namespace PicGallery.Controllers
             }
 
             result = await _userManager.AddClaimsAsync(user,
-            userModel.Claims.Select(c => new Claim(c.ClaimType, c.ClaimType)));
+            userModel.Claims.Select(c => new Claim(c.ClaimType, c.IsSelected? "true":"false")));
 
             if (!result.Succeeded)
             {
