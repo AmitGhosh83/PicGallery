@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
+
 namespace EmployeeManagement.DataAccess.Models
 {
     public class LoginUserModel
@@ -15,5 +16,7 @@ namespace EmployeeManagement.DataAccess.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public bool RememberMe { get; set; }
+        public string ReturnUrl { get; set; }
+        public IList<Microsoft.AspNetCore.Authentication.AuthenticationScheme> ExternalLogins { get; set; }
     }
 }

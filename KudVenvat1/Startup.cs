@@ -64,6 +64,19 @@ namespace KudVenvat1
                 options.Filters.Add(new AuthorizeFilter(policy)); 
             });
 
+            //Add Google Authetication
+            services.AddAuthentication()
+                    .AddGoogle(options =>
+                    {
+                        options.ClientId = "756356816179-6rbnjee7ts8tr6tqrangmhbg6vieirjs.apps.googleusercontent.com";
+                        options.ClientSecret = "eTVIS8M8TA0MnWK6DzEeNHl_";
+                    })
+                    .AddFacebook(options=>
+                    {
+                        options.AppId = "2386399561656384";
+                        options.AppSecret = "a8dd74819af88e9b978970f1be0d6a5f";
+                    });
+
             //Change Access Denied path
             services.ConfigureApplicationCookie(options =>
             {

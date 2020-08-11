@@ -8,12 +8,30 @@
     ".NETCoreApp,Version=v3.1": {
       "PicGallery.DataAccess/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Facebook": "3.1.7",
+          "Microsoft.AspNetCore.Authentication.Google": "3.1.6",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.6",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.6"
         },
         "runtime": {
           "PicGallery.DataAccess.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Facebook/3.1.7": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "assemblyVersion": "3.1.7.0",
+            "fileVersion": "3.100.720.37213"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/3.1.6": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "3.1.6.0",
+            "fileVersion": "3.100.620.31714"
+          }
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.6": {
@@ -783,12 +801,6 @@
       "System.Security.Permissions/4.5.0": {
         "dependencies": {
           "System.Security.AccessControl": "4.5.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Security.Permissions.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.6.26515.6"
-          }
         }
       },
       "System.Security.Principal.Windows/4.5.0": {
@@ -931,6 +943,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.AspNetCore.Authentication.Facebook/3.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R3j72nKQG16hO/SnVrcHR4SJsQwRDHXgtUWu6Vc/UwhXRxBYt3w13RYdwXdLvGPsW0aOgpWeon6Ao4nwo6p8Zw==",
+      "path": "microsoft.aspnetcore.authentication.facebook/3.1.7",
+      "hashPath": "microsoft.aspnetcore.authentication.facebook.3.1.7.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JrIuNuQ4i+k4rVP7NIF/9fzYX7Vk1xPxFEMxBGLTuvZTl6YHdIiS5Dj7sDj935ruX47v8VnGBdHp3PeCvvrzqA==",
+      "path": "microsoft.aspnetcore.authentication.google/3.1.6",
+      "hashPath": "microsoft.aspnetcore.authentication.google.3.1.6.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.6": {
       "type": "package",

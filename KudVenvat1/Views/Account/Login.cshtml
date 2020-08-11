@@ -6,10 +6,12 @@
 
 <h1>Login</h1>
 
-<h4>User Login</h4>
+
 <hr />
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
+        <h4>Local User Login</h4>
+        <hr />
         <form asp-action="Login" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
@@ -32,6 +34,29 @@
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
         </form>
+    </div>
+    <div class="col-md-6">
+        <h4>External Login</h4>
+        <hr />
+        @{
+            if (Model.ExternalLogins.Count == 0)
+            {
+                <div>No external logins configured</div>
+            }
+            else
+            {
+                <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
+                    <div>
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name">
+                                @provider.DisplayName
+                            </button>
+                        }
+                    </div>
+                </form>
+            }
+        }
     </div>
 </div>
 
