@@ -441,8 +441,6 @@ D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\PicGallery.DataAccess.pdb
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.csprojAssemblyReference.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.AssemblyInfoInputs.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.AssemblyInfo.cs
-D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.csproj.CoreCompileInputs.cache
-D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.MvcApplicationPartsAssemblyInfo.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.RazorAssemblyInfo.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.RazorAssemblyInfo.cs
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.TagHelpers.input.cache
@@ -479,3 +477,9 @@ D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\staticwebassets\PicGallery.
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.dll
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.pdb
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.genruntimeconfig.cache
+D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\nlog.config
+D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.dll
+D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.csproj.CoreCompileInputs.cache
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.MvcApplicationPartsAssemblyInfo.cache

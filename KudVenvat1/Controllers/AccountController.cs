@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace KudVenvat1.Controllers
 {
-    public class AccountController :Controller
+    public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -58,7 +58,7 @@ namespace KudVenvat1.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 // RegisterViewModel--> UserModel
                 var userModel = new UserModel
@@ -66,7 +66,7 @@ namespace KudVenvat1.Controllers
                     Email = model.Email,
                     Password = model.Password,
                     ConfirmPassword = model.ConfirmPassword,
-                    City= model.City
+                    City = model.City
                 };
 
                 //UserModel--> IdentityUser
@@ -77,12 +77,12 @@ namespace KudVenvat1.Controllers
                     City = userModel.City
                 };
 
-                var result= await _userManager.CreateAsync(user, userModel.Password);
-                if(result.Succeeded)
+                var result = await _userManager.CreateAsync(user, userModel.Password);
+                if (result.Succeeded)
                 {
-                   if(_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
-                        return RedirectToAction("ListUsers","Administration");
+                        return RedirectToAction("ListUsers", "Administration");
                     }
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
@@ -92,13 +92,13 @@ namespace KudVenvat1.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-            
+
             return View(model);
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Login( string returnUrl)
+        public async Task<IActionResult> Login(string returnUrl)
         {
             LoginViewModel model = new LoginViewModel
             {
@@ -113,6 +113,9 @@ namespace KudVenvat1.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            // To ensure if local login fails, the external logins are still displayed/
+            model.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
                 // LoginViewModel--> UserModel
@@ -123,12 +126,19 @@ namespace KudVenvat1.Controllers
                     RememberMe = model.RememberMe
                 };
 
+                var userModel = await _userManager.FindByEmailAsync(user.Email);
+                if (userModel != null && !userModel.EmailConfirmed && (await _userManager.CheckPasswordAsync(userModel, model.Password)))
+                {
+                    ModelState.AddModelError("", "Email is not confirmed yet");
+                    return View(model);
+                }
+
                 var result = await _signInManager.PasswordSignInAsync(user.Email, user.Password, user.RememberMe, false);
 
 
                 if (result.Succeeded)
                 {
-                    if(!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);
                     }
@@ -155,9 +165,9 @@ namespace KudVenvat1.Controllers
             return new ChallengeResult(provider, properties);
         }
 
-       
+
         [AllowAnonymous]
-        public async Task<IActionResult> ExternalLoginCallback(string returnUrl= null, string remoteError = null)
+        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
@@ -176,7 +186,7 @@ namespace KudVenvat1.Controllers
             if (remoteError != null)
             {
                 ModelState.AddModelError(string.Empty, $"Error from external provider: {remoteError}");
-                return View("Login", loginViewModel);
+                return View("Login", model);
             }
 
             //To get external login info from login provider
@@ -184,8 +194,23 @@ namespace KudVenvat1.Controllers
             if (information == null)
             {
                 ModelState.AddModelError(string.Empty, $"Error loading external login information");
-                return View("Login", loginViewModel);
+                return View("Login", model);
             }
+
+            // Get the email claim value
+            var email = information.Principal.FindFirstValue(ClaimTypes.Email);
+            ApplicationUser user = null;
+
+            if (email != null)
+            {
+                user = await _userManager.FindByEmailAsync(email);
+                if (user != null && !user.EmailConfirmed)
+                {
+                    ModelState.AddModelError("", "Email is not confirmed yet");
+                    return View("Login", model);
+                }
+            }
+
             var signInResult = await _signInManager.ExternalLoginSignInAsync(information.LoginProvider, information.ProviderKey, isPersistent: false, bypassTwoFactor: true);
 
             if (signInResult.Succeeded)
@@ -196,14 +221,9 @@ namespace KudVenvat1.Controllers
             // a local account
             else
             {
-                // Get the email claim value
-                var email = information.Principal.FindFirstValue(ClaimTypes.Email);
-
                 if (email != null)
                 {
                     // Create a new user without password if we do not have a user already
-                    var user = await _userManager.FindByEmailAsync(email);
-
                     if (user == null)
                     {
                         user = new ApplicationUser
@@ -228,7 +248,7 @@ namespace KudVenvat1.Controllers
 
                 return View("Error");
             }
-        
+
         }
 
         #endregion

@@ -8,6 +8,10 @@ namespace EmployeeManagement.DataAccess.Models
 {
     public class LoginUserModel
     {
+        public LoginUserModel()
+        {
+            ExternalLogins = new List<Microsoft.AspNetCore.Authentication.AuthenticationScheme>();
+        }
         [Required]
         [EmailAddress]
         public string Email { get; set; }

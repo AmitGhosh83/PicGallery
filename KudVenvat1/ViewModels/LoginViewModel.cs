@@ -10,6 +10,10 @@ namespace KudVenvat1.Models
 {
     public class LoginViewModel
     {
+        public LoginViewModel()
+        {
+            ExternalLogins = new List<Microsoft.AspNetCore.Authentication.AuthenticationScheme>();
+        }
         [Required]
         [EmailAddress]
         public string Email { get; set; }

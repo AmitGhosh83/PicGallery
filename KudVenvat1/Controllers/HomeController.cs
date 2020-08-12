@@ -48,7 +48,7 @@ namespace KudVenvat1.Controllers
         [AllowAnonymous]
         public ViewResult Details( int? id)
         {
-            //throw new Exception("Error occured");
+            //throw new Exception("Error in Details View");
             HomeDetailsViewModel viewModel = new HomeDetailsViewModel();
             var result = _empRepository.GetEmployee(id ?? 1);
             if(result==null)

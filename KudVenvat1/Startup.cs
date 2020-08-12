@@ -18,6 +18,7 @@ using PicGallery.DataAccess.Models;
 using System.Runtime;
 using System.Security.Claims;
 using PicGallery.Security;
+using Microsoft.CodeAnalysis.Options;
 
 namespace KudVenvat1
 {
@@ -71,7 +72,7 @@ namespace KudVenvat1
                         options.ClientId = Configuration["Google:ClientId"];
                         options.ClientSecret = Configuration["Google:ClientSecret"];
                     })
-                    .AddFacebook(options=>
+                    .AddFacebook(options =>
                     {
                         options.AppId = Configuration["Facebook:AppId"];
                         options.AppSecret = Configuration["Facebook:AppSecret"]; ;
@@ -92,6 +93,8 @@ namespace KudVenvat1
             {
                 options.Password.RequiredLength = 10;
                 options.Password.RequireNonAlphanumeric = false;
+
+                options.SignIn.RequireConfirmedEmail = true;
             }).AddEntityFrameworkStores<AppDbContext>();
 
 

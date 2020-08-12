@@ -1,0 +1,53 @@
+2020-08-11 20:27:13.2662|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\Amit_\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-08-11 20:27:13.5341|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2020-08-11 20:27:13.5341|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2020-08-11 20:27:13.5451|INFO|Microsoft.Hosting.Lifetime|Content root path: D:\src\PicGallery\KudVenvat1
+2020-08-11 20:27:13.5690|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2.0 GET https://localhost:44350/  
+2020-08-11 20:27:13.6247|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'KudVenvat1.Controllers.HomeController.Index (PicGallery)'
+2020-08-11 20:27:13.6803|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller KudVenvat1.Controllers.HomeController (PicGallery).
+2020-08-11 20:27:13.8512|INFO|Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor|Executing ViewResult, running view Index.
+2020-08-11 20:27:14.5463|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 3.1.6 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MaxPoolSize=128 
+2020-08-11 20:27:15.0137|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [e].[Id], [e].[Department], [e].[EmailId], [e].[Name], [e].[PhotoPath]
+FROM [Employees] AS [e]
+2020-08-11 20:27:15.4485|INFO|Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor|Executed ViewResult - view Index executed in 1604.886ms.
+2020-08-11 20:27:15.4528|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action KudVenvat1.Controllers.HomeController.Index (PicGallery) in 1768.7398ms
+2020-08-11 20:27:15.4741|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'KudVenvat1.Controllers.HomeController.Index (PicGallery)'
+2020-08-11 20:27:15.5225|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 1947.6027ms 200 text/html; charset=utf-8
+2020-08-11 20:27:17.4579|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2.0 GET https://localhost:44350/Home/details/1  
+2020-08-11 20:27:17.4672|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'KudVenvat1.Controllers.HomeController.Details (PicGallery)'
+2020-08-11 20:27:17.4848|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "Details", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ViewResult Details(System.Nullable`1[System.Int32]) on controller KudVenvat1.Controllers.HomeController (PicGallery).
+2020-08-11 20:27:21.9616|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action KudVenvat1.Controllers.HomeController.Details (PicGallery) in 4473.8251ms
+2020-08-11 20:27:21.9834|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'KudVenvat1.Controllers.HomeController.Details (PicGallery)'
+2020-08-11 20:27:22.0650|ERROR|Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware|An unhandled exception has occurred while executing the request.
+2020-08-11 20:27:22.0650|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'KudVenvat1.Controllers.ErrorController.Error (PicGallery)'
+2020-08-11 20:27:22.0650|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "Error", controller = "Error"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Error() on controller KudVenvat1.Controllers.ErrorController (PicGallery).
+2020-08-11 20:27:22.0824|ERROR|KudVenvat1.Controllers.ErrorController|The path /Home/details/1 threw an exception System.Exception: Error in Details View
+   at KudVenvat1.Controllers.HomeController.Details(Nullable`1 id) in D:\src\PicGallery\KudVenvat1\Controllers\HomeController.cs:line 51
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-08-11 20:27:22.0824|INFO|Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor|Executing ViewResult, running view Error.
+2020-08-11 20:27:22.1898|INFO|Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor|Executed ViewResult - view Error executed in 104.6764ms.
+2020-08-11 20:27:22.1898|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action KudVenvat1.Controllers.ErrorController.Error (PicGallery) in 116.2813ms
+2020-08-11 20:27:22.1898|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'KudVenvat1.Controllers.ErrorController.Error (PicGallery)'
+2020-08-11 20:27:22.2022|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 4745.2692ms 500 text/html; charset=utf-8
