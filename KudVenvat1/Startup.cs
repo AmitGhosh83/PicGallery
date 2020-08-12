@@ -68,13 +68,13 @@ namespace KudVenvat1
             services.AddAuthentication()
                     .AddGoogle(options =>
                     {
-                        options.ClientId = "756356816179-6rbnjee7ts8tr6tqrangmhbg6vieirjs.apps.googleusercontent.com";
-                        options.ClientSecret = "eTVIS8M8TA0MnWK6DzEeNHl_";
+                        options.ClientId = Configuration["Google:ClientId"];
+                        options.ClientSecret = Configuration["Google:ClientSecret"];
                     })
                     .AddFacebook(options=>
                     {
-                        options.AppId = "2386399561656384";
-                        options.AppSecret = "a8dd74819af88e9b978970f1be0d6a5f";
+                        options.AppId = Configuration["Facebook:AppId"];
+                        options.AppSecret = Configuration["Facebook:AppSecret"]; ;
                     });
 
             //Change Access Denied path
