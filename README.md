@@ -1,4 +1,6 @@
 # PicGallery
+Track Users, Login, Roles, Claim and Tokens
+
 Net 3.1 fully functional MVC website showcasing uploaded pictures in a browser compactible manner.
 The main features
 
