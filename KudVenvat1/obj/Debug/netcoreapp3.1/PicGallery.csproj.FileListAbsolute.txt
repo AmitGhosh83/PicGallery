@@ -310,6 +310,7 @@ C:\Users\Amit_\source\repos\PicGallery\PicGallery\KudVenvat1\obj\Debug\netcoreap
 C:\Users\Amit_\source\repos\PicGallery\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.dll
 C:\Users\Amit_\source\repos\PicGallery\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.pdb
 C:\Users\Amit_\source\repos\PicGallery\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.genruntimeconfig.cache
+D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\nlog.config
 D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\appsettings.json
 D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -365,6 +366,9 @@ D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.
 D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.dll
+D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll
 D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
 D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
@@ -441,11 +445,16 @@ D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\PicGallery.DataAccess.pdb
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.csprojAssemblyReference.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.AssemblyInfoInputs.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.AssemblyInfo.cs
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.csproj.CoreCompileInputs.cache
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.MvcApplicationPartsAssemblyInfo.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.RazorAssemblyInfo.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.RazorAssemblyInfo.cs
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.TagHelpers.input.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.TagHelpers.output.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.RazorCoreGenerate.cache
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ConfirmEmail.cshtml.g.cs
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPasswordConfirmation.cshtml.g.cs
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Administration\AccessDenied.cshtml.g.cs
@@ -477,10 +486,5 @@ D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\staticwebassets\PicGallery.
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.dll
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.pdb
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.genruntimeconfig.cache
-D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\nlog.config
-D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.dll
-D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
-D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll
-D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.csproj.CoreCompileInputs.cache
-D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.MvcApplicationPartsAssemblyInfo.cache
-D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ConfirmEmail.cshtml.g.cs
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPAsswordConfirmation.cshtml.g.cs

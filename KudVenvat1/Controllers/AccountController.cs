@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.Logging;
 using PicGallery.DataAccess.Models;
+using PicGallery.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -272,6 +274,15 @@ namespace KudVenvat1.Controllers
                         };
 
                         await _userManager.CreateAsync(user);
+
+                        //Add the token confirmation
+                        var token = await _userManager.GenerateChangeEmailTokenAsync(user, user.Email);
+                        var confirmationlink = Url.Action("ConfirmEmail", "Account", new { @userId = user.Id, token = token }, Request.Scheme);
+
+                        _logger.Log(LogLevel.Warning, confirmationlink);
+                        ViewBag.ErrorTitle = "Registration Successful";
+                        ViewBag.ErrorMessage = "Before you login, please confirm your email, We sent you a link for that";
+                        return View("Error");
                     }
 
                     // Add a login (i.e insert a row for the user in AspNetUserLogins table)
@@ -290,6 +301,80 @@ namespace KudVenvat1.Controllers
 
         }
 
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var userModel = new ForgotPasswordUserModel { Email = model.Email };
+                var user = await _userManager.FindByEmailAsync(userModel.Email);
+                if(user!=null && await _userManager.IsEmailConfirmedAsync(user))
+                {
+                    //Create Token, URL and Log
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var passwordResetLink = Url.Action("ResetPassword", "Account", new { @email = userModel.Email, token = token },Request.Scheme);
+                    _logger.Log(LogLevel.Warning, passwordResetLink);
+
+                    return View("ForgotPasswordConfirmation");
+                }
+                return View("ForgotPasswordConfirmation");
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword(string email, string token)
+        {
+            if(email==null || token==null)
+            {
+                ModelState.AddModelError("", "Invalid password and token combination");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var userModel = new ResetPasswordUserModel
+                {
+                    ConfirmPassword = model.ConfirmPassword,
+                    Email = model.Email,
+                    Password = model.Password,
+                    Token = model.Token
+                };
+
+                var user = await _userManager.FindByEmailAsync(userModel.Email);
+                if (user!=null)
+                {
+                    var result = await _userManager.ResetPasswordAsync(user,userModel.Token, userModel.Password);
+                    if(result.Succeeded)
+                    {
+                        return View("ResetPasswordConfirmation");
+                    }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(model);
+                }
+                //return View("ResetPasswordConfirmation");
+            }
+            return View(model);
+        }
+        
         #endregion
     }
 }

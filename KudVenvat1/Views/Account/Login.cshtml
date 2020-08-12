@@ -33,6 +33,7 @@
             <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
+            <a asp-action="ForgotPassword" asp-controller="Account">ForgotPassword?</a>
         </form>
     </div>
     <div class="col-md-6">
@@ -49,7 +50,7 @@
                     <div>
                         @foreach (var provider in Model.ExternalLogins)
                         {
-                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name">
+                            <button type="submit" class="btn btn-social" name="provider" value="@provider.Name">
                                 @provider.DisplayName
                             </button>
                         }

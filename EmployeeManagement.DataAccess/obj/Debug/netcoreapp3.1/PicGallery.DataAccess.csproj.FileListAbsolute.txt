@@ -26,7 +26,6 @@ D:\src\PicGallery\EmployeeManagement.DataAccess\bin\Debug\netcoreapp3.1\PicGalle
 D:\src\PicGallery\EmployeeManagement.DataAccess\bin\Debug\netcoreapp3.1\PicGallery.DataAccess.runtimeconfig.dev.json
 D:\src\PicGallery\EmployeeManagement.DataAccess\bin\Debug\netcoreapp3.1\PicGallery.DataAccess.dll
 D:\src\PicGallery\EmployeeManagement.DataAccess\bin\Debug\netcoreapp3.1\PicGallery.DataAccess.pdb
-D:\src\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.csprojAssemblyReference.cache
 D:\src\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.AssemblyInfoInputs.cache
 D:\src\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.AssemblyInfo.cs
 D:\src\PicGallery\EmployeeManagement.DataAccess\obj\Debug\netcoreapp3.1\PicGallery.DataAccess.csproj.CoreCompileInputs.cache
