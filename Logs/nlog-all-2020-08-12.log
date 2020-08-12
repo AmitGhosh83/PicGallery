@@ -1,0 +1,3 @@
+2020-08-12 07:45:39.4033|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request.
+2020-08-12 07:47:54.6086|WARN|Microsoft.AspNetCore.Identity.UserManager|User 5df99063-1727-4843-81ff-2bab03f865d0 validation failed: DuplicateUserName.
+2020-08-12 07:50:30.7915|WARN|KudVenvat1.Controllers.AccountController|https://localhost:44350/Account/ConfirmEmail?userid=7a0cf7fd-514c-4897-a5a1-d19418e735f9&token=CfDJ8K53IlYzwalGlSZ147%2Fj%2BRBRyQPg%2FVCO0GnP47KEr%2F8Lv7F8xzE5FUC8dilsNs%2BNjD3PVe0Ui1cazW1mab3htfp023AM3SrAM4huFbzIB%2FKV5oG2NIxgt64C93XI9qptFdHqJSwQhPgeXCCoShCdmriyhDSLLuEty0GNA3V2Ncql8cwgnwaviYko6GDA2XJ0V8nusl7v1bG%2Ff0ZG6ooVzJ3mhTAephcJmNgSmwqL3U9NpWeOayM%2BqRza1WfEblwvPA%3D%3D

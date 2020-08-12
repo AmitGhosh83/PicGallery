@@ -483,3 +483,4 @@ D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
 D:\src\PicGallery\KudVenvat1\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.csproj.CoreCompileInputs.cache
 D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\PicGallery.MvcApplicationPartsAssemblyInfo.cache
+D:\src\PicGallery\KudVenvat1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ConfirmEmail.cshtml.g.cs

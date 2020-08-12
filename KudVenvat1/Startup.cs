@@ -95,7 +95,8 @@ namespace KudVenvat1
                 options.Password.RequireNonAlphanumeric = false;
 
                 options.SignIn.RequireConfirmedEmail = true;
-            }).AddEntityFrameworkStores<AppDbContext>();
+            }).AddEntityFrameworkStores<AppDbContext>()
+               .AddDefaultTokenProviders();
 
 
             //services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Logging;
 using PicGallery.DataAccess.Models;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,15 @@ namespace KudVenvat1.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ILogger<AccountController> _logger;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, 
+                                 SignInManager<ApplicationUser> signInManager,
+                                 ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -80,20 +85,54 @@ namespace KudVenvat1.Controllers
                 var result = await _userManager.CreateAsync(user, userModel.Password);
                 if (result.Succeeded)
                 {
+                    //Build the token and the Confirm Email Link
+                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var confirmationLink = Url.Action("ConfirmEmail", "Account", new { @userid = user.Id, token = token }, Request.Scheme);
+                    _logger.Log(LogLevel.Warning, confirmationLink);
+
                     if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
                         return RedirectToAction("ListUsers", "Administration");
                     }
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    ViewBag.ErrorTitle = "Registration Successful";
+                    ViewBag.ErrorMessage = "Before you login, please confirm your email, We sent you a link for that";
+                    return View("Error");
+
+                    ////Instead of siginin in the user, we redirect then to Confirm Link
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
+                    //return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
             }
-
             return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail (string userId, string token)
+        {
+            if(userId==null || token==null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if(user==null)
+            {
+                ViewBag.ErrorMessage = $"The user id {userId} is invalid";
+                return View("NotFound");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            if(result.Succeeded)
+            {
+                return View();
+            }
+            ViewBag.ErrorTitle = $"Email cannot be confirmed";
+            return View("Error");
+
         }
 
         [HttpGet]
